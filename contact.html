@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>قيم زون | تواصل معنا</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  :root{
+    --bg-dark:#121212;
+    --bg-dark-2:#1b1533;
+    --text-main:#F5F5F5;
+    --card-bg:#2A2A2A;
+    --purple-1:#7B61FF;
+    --purple-2:#9F8CFF;
+  }
+
+  body{
+    margin:0;
+    font-family:Tahoma,Arial;
+    background:
+      radial-gradient(900px 400px at 20% 10%, rgba(123,97,255,.15), transparent 60%),
+      linear-gradient(135deg,var(--bg-dark),var(--bg-dark-2));
+    color:var(--text-main);
+  }
+
+  /* ===== Containers ===== */
+  .container{
+    max-width:1100px;
+    margin:auto;
+    padding:50px 16px;
+  }
+
+  h1{
+    margin:0 0 10px;
+    font-size:34px;
+    background:linear-gradient(135deg,var(--purple-1),var(--purple-2));
+    background-clip:text;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  .subtitle{
+    color:#cfcfcf;
+    max-width:520px;
+    line-height:1.9;
+  }
+
+  /* ===== Layout ===== */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:28px;
+    margin-top:40px;
+  }
+
+  /* ===== Form ===== */
+  .contact-card{
+    background:var(--card-bg);
+    border-radius:18px;
+    padding:26px;
+    border:1px solid #333;
+  }
+
+  .contact-card h3{
+    margin-top:0;
+    margin-bottom:18px;
+  }
+
+  .form-group{
+    margin-bottom:16px;
+  }
+
+  .form-group label{
+    display:block;
+    margin-bottom:6px;
+    font-size:13px;
+    color:#cfcfcf;
+  }
+
+  .form-group input,
+  .form-group textarea{
+    width:100%;
+    padding:12px 14px;
+    border-radius:12px;
+    border:1px solid #333;
+    background:#1f1f1f;
+    color:var(--text-main);
+    resize:none;
+  }
+
+  .form-group textarea{
+    height:140px;
+  }
+
+  .submit-btn{
+    margin-top:10px;
+    padding:14px 28px;
+    border:none;
+    border-radius:999px;
+    background:linear-gradient(135deg,var(--purple-1),var(--purple-2));
+    color:#fff;
+    font-weight:900;
+    cursor:pointer;
+  }
+
+  /* ===== Info Cards ===== */
+  .info-cards{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+
+  .info-box{
+    background:var(--card-bg);
+    border-radius:16px;
+    padding:20px;
+    border:1px solid #333;
+  }
+
+  .info-box strong{
+    display:block;
+    margin-bottom:6px;
+    font-size:15px;
+  }
+
+  .info-box span{
+    font-size:14px;
+    color:#cfcfcf;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width:900px){
+    .contact-grid{
+      grid-template-columns:1fr;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ===== Header ===== -->
+<div id="headerMount"></div>
+
+<!-- ===== Content ===== -->
+<main class="container">
+  <h1>تواصل معنا</h1>
+  <p class="subtitle">
+    يسعدنا تواصلك معنا في أي وقت. فريق قيم زون جاهز للإجابة على
+    استفساراتك وتقديم أفضل تجربة تسوق لك.
+  </p>
+
+  <section class="contact-grid">
+
+    <!-- Form -->
+    <div class="contact-card">
+      <h3>أرسل لنا رسالة</h3>
+
+      <div class="form-group">
+        <label>الاسم الكامل</label>
+        <input type="text" placeholder="اكتب اسمك">
+      </div>
+
+      <div class="form-group">
+        <label>البريد الإلكتروني</label>
+        <input type="email" placeholder="example@email.com">
+      </div>
+
+      <div class="form-group">
+        <label>رسالتك</label>
+        <textarea placeholder="اكتب رسالتك هنا..."></textarea>
+      </div>
+
+      <button class="submit-btn">إرسال الرسالة</button>
+    </div>
+
+    <!-- Info -->
+    <div class="info-cards">
+      <div class="info-box">
+        <strong>📧 البريد الإلكتروني</strong>
+        <span>support@gamezone.com</span>
+      </div>
+
+      <div class="info-box">
+        <strong>📞 واتساب</strong>
+        <span>+966 5XX XXX XXX</span>
+      </div>
+
+      <div class="info-box">
+        <strong>📍 الموقع</strong>
+        <span>المملكة العربية السعودية</span>
+      </div>
+
+      <div class="info-box">
+        <strong>⏰ أوقات العمل</strong>
+        <span>يوميًا من 10 صباحًا إلى 11 مساءً</span>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- ===== Footer ===== -->
+<div id="footerMount"></div>
+
+<script>
+  async function injectTemplate(id,file){
+    const res = await fetch(file);
+    const html = await res.text();
+    const doc = new DOMParser().parseFromString(html,"text/html");
+    document.getElementById(id).innerHTML = doc.body.innerHTML;
+    document.getElementById(id)
+      .querySelectorAll("script")
+      .forEach(o=>{
+        const s=document.createElement("script");
+        s.text=o.textContent;
+        o.replaceWith(s);
+      });
+  }
+
+  injectTemplate("headerMount","header.html");
+  injectTemplate("footerMount","footer.html");
+</script>
+
+</body>
+</html>

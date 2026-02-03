@@ -1,0 +1,105 @@
+<body>
+
+<style>
+  .gz-footer{
+    margin-top:100px;
+    background:linear-gradient(135deg,#121212,#1b1533);
+    border-top:1px solid #1f1f1f;
+    color:#cfcfcf;
+  }
+
+  .gz-footer-inner{
+    max-width:1100px;
+    margin:auto;
+    padding:40px 16px 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+  }
+
+  .gz-footer h4{
+    margin:0 0 12px;
+    font-size:15px;
+    background:linear-gradient(135deg,#7B61FF,#9F8CFF);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  .gz-footer p,
+  .gz-footer a{
+    font-size:13px;
+    line-height:1.8;
+    color:#cfcfcf;
+    text-decoration:none;
+  }
+
+  .gz-footer a:hover{
+    color:#9F8CFF;
+  }
+
+  .gz-footer-bottom{
+    text-align:center;
+    border-top:1px solid #1f1f1f;
+    padding:16px;
+    font-size:12px;
+    color:#999;
+  }
+
+  .gz-footer-bottom strong{
+    background:linear-gradient(135deg,#7B61FF,#9F8CFF);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+</style>
+
+<footer class="gz-footer">
+  <div class="gz-footer-inner">
+
+    <div>
+      <h4>عن قيم زون</h4>
+      <p>
+        قيم زون متجر متخصص في بيع قطع الكمبيوتر،
+        وأجهزة PlayStation و Xbox وملحقاتها.
+        نهدف لتوفير منتجات أصلية بأسعار منافسة
+        وتجربة تسوق سهلة وآمنة.
+      </p>
+    </div>
+
+    <div>
+      <h4>روابط سريعة</h4>
+      <p><a href="#">الرئيسية</a></p>
+      <p><a href="#">أجزاء PC</a></p>
+      <p><a href="#">PlayStation</a></p>
+      <p><a href="#">Xbox</a></p>
+      <p><a href="#">الملحقات</a></p>
+    </div>
+
+    <div>
+      <h4>التواصل معنا</h4>
+      <p>📧 البريد: support@gamezone.sa</p>
+      <p>📞 الهاتف: 055-123-4567</p>
+      <p>📍 الموقع: المملكة العربية السعودية</p>
+      <p>⏰ أوقات العمل: يوميًا 10ص – 11م</p>
+    </div>
+
+    <div>
+      <h4>خدمة العملاء</h4>
+      <p><a href="#">سياسة الاسترجاع</a></p>
+      <p><a href="#">سياسة الخصوصية</a></p>
+      <p><a href="#">الشروط والأحكام</a></p>
+      <p><a href="#">الأسئلة الشائعة</a></p>
+    </div>
+
+  </div>
+
+  <div class="gz-footer-bottom">
+    © <span id="year"></span>
+    <strong>قيم زون</strong> — جميع الحقوق محفوظة
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+
+</body>

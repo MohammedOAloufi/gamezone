@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>قيم زون | الرئيسية</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  :root{
+    --bg-dark:#121212;
+    --bg-dark-2:#1b1533;
+    --card-bg:#2A2A2A;
+    --text-main:#F5F5F5;
+    --purple-1:#7B61FF;
+    --purple-2:#9F8CFF;
+    --green:#22c55e;
+  }
+
+  body{
+    margin:0;
+    font-family:Tahoma,Arial;
+    background:
+      radial-gradient(900px 400px at 20% 10%, rgba(123,97,255,.15), transparent 60%),
+      linear-gradient(135deg,var(--bg-dark),var(--bg-dark-2));
+    color:var(--text-main);
+    overflow-x:hidden;
+  }
+
+  /* ===== Video Banner ===== */
+  .hero-video{
+    position:relative;
+    height:70vh;
+    min-height:420px;
+    overflow:hidden;
+  }
+
+  .hero-video video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .hero-overlay{
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(135deg, rgba(18,18,18,.85), rgba(27,21,51,.65)),
+      radial-gradient(600px 300px at 20% 10%, rgba(123,97,255,.25), transparent 60%);
+    display:flex;
+    align-items:center;
+  }
+
+  .hero-content{
+    max-width:1100px;
+    margin:auto;
+    padding:0 16px;
+  }
+
+  .hero-content h1{
+    font-size:36px;
+    margin:0 0 10px;
+    background:linear-gradient(135deg,var(--purple-1),var(--purple-2));
+    background-clip:text;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  .hero-content p{
+    max-width:520px;
+    line-height:1.9;
+    color:#e5e5e5;
+    font-size:15px;
+  }
+
+  .hero-actions{
+    margin-top:22px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+
+  .hero-btn{
+    padding:12px 26px;
+    border:none;
+    border-radius:999px;
+    font-weight:900;
+    cursor:pointer;
+    color:#fff;
+    background:linear-gradient(135deg,var(--purple-1),var(--purple-2));
+  }
+
+  .hero-btn.outline{
+    background:transparent;
+    border:2px solid var(--purple-1);
+  }
+
+  /* ===== Main Content ===== */
+  .container{
+    max-width:1100px;
+    margin:auto;
+    padding:40px 16px;
+  }
+
+  h2{
+    background:linear-gradient(135deg,var(--purple-1),var(--purple-2));
+    background-clip:text;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom:6px;
+  }
+
+  .products{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:16px;
+    margin-top:24px;
+  }
+
+  .card{
+    background:var(--card-bg);
+    border-radius:14px;
+    padding:14px;
+    border:1px solid #333;
+    transition:.2s;
+  }
+
+  .card:hover{
+    transform:translateY(-4px);
+    border-color:var(--purple-1);
+  }
+
+  .price{
+    margin-top:6px;
+    font-weight:900;
+    background:linear-gradient(135deg,var(--purple-1),var(--purple-2));
+    background-clip:text;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  .status{
+    margin-top:4px;
+    font-size:12px;
+    font-weight:700;
+    color:var(--green);
+  }
+
+  @media (max-width:768px){
+    .hero-content h1{
+      font-size:28px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div id="headerMount"></div>
+
+<!-- ===== HERO VIDEO BANNER ===== -->
+<section class="hero-video">
+  <video src="media/video.mp4" autoplay muted loop playsinline></video>
+
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <h1>قوة الألعاب تبدأ من هنا</h1>
+      <p>
+        في قيم زون نوفر لك أقوى قطع الكمبيوتر، وأحدث أجهزة
+        PlayStation و Xbox، مع ملحقات أصلية وتجربة تسوق احترافية.
+      </p>
+
+      <div class="hero-actions">
+        <button class="hero-btn">تسوق الآن</button>
+        <button class="hero-btn outline">استكشف العروض</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<main class="container">
+  <h2>المنتجات</h2>
+  <p>تشكيلة واسعة من قطع البي سي وأجهزة الألعاب</p>
+
+  <section class="products" id="productList"></section>
+</main>
+
+<div id="footerMount"></div>
+
+<script>
+  async function injectTemplate(id,file){
+    const res=await fetch(file);
+    const html=await res.text();
+    const doc=new DOMParser().parseFromString(html,"text/html");
+    document.getElementById(id).innerHTML=doc.body.innerHTML;
+    document.getElementById(id).querySelectorAll("script").forEach(o=>{
+      const s=document.createElement("script");
+      s.text=o.textContent;
+      o.replaceWith(s);
+    });
+  }
+
+  injectTemplate("headerMount","header.html");
+  injectTemplate("footerMount","footer.html");
+
+  const products=[
+    "RTX 4090","RTX 4080","RTX 4070","RTX 4060",
+    "Ryzen 9 7950X","Ryzen 7 7800X3D","Ryzen 5 7600",
+    "Intel i9 14900K","Intel i7 14700K","Intel i5 14600K",
+    "PlayStation 5","PlayStation 5 Slim","Xbox Series X","Xbox Series S",
+    "يد PS5","يد Xbox","سماعة ألعاب","كيبورد RGB","ماوس ألعاب",
+    "شاشة 240Hz","شاشة 165Hz","SSD NVMe 2TB","SSD NVMe 1TB",
+    "RAM 64GB","RAM 32GB","RAM 16GB","مزود طاقة 1000W","مزود طاقة 850W",
+    "كيس PC احترافي","كيس PC متوسط","مبرد مائي","مبرد هوائي",
+    "لوحة أم Z790","لوحة أم B650","كرت شبكة","كرت التقاط","ذراع تحكم إضافي"
+  ];
+
+  const list=document.getElementById("productList");
+
+  function render(arr){
+    list.innerHTML=arr.map(p=>`
+      <div class="card">
+        <strong>${p}</strong>
+        <div class="price">${Math.floor(Math.random()*5000+300)} ر.س</div>
+        <div class="status">متوفر</div>
+      </div>
+    `).join("");
+  }
+
+  render(products);
+
+  window.addEventListener("gz-search",e=>{
+    const q=e.detail.query.toLowerCase();
+    render(products.filter(p=>p.toLowerCase().includes(q)));
+  });
+</script>
+
+</body>
+</html>
