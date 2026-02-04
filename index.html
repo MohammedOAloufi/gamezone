@@ -6,152 +6,108 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-  :root{
-    --bg-dark:#121212;
-    --bg-dark-2:#1b1533;
-    --card-bg:#2A2A2A;
-    --text-main:#F5F5F5;
-    --purple-1:#7B61FF;
-    --purple-2:#9F8CFF;
-    --green:#22c55e;
-  }
+:root{
+  --bg-dark:#121212;
+  --bg-dark-2:#1b1533;
+  --card-bg:#2A2A2A;
+  --text-main:#F5F5F5;
+  --purple-1:#7B61FF;
+  --purple-2:#9F8CFF;
+  --green:#22c55e;
+}
 
-  body{
-    margin:0;
-    font-family:Tahoma,Arial;
-    background:
-      radial-gradient(900px 400px at 20% 10%, rgba(123,97,255,.15), transparent 60%),
-      linear-gradient(135deg,var(--bg-dark),var(--bg-dark-2));
-    color:var(--text-main);
-    overflow-x:hidden;
-  }
+body{
+  margin:0;
+  font-family:Tahoma,Arial;
+  background:
+    radial-gradient(900px 400px at 20% 10%, rgba(123,97,255,.15), transparent 60%),
+    linear-gradient(135deg,var(--bg-dark),var(--bg-dark-2));
+  color:var(--text-main);
+}
 
-  /* ===== Video Banner ===== */
-  .hero-video{
-    position:relative;
-    height:70vh;
-    min-height:420px;
-    overflow:hidden;
-  }
+/* ===== Products ===== */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:40px 16px;
+}
 
-  .hero-video video{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:18px;
+  margin-top:24px;
+}
 
-  .hero-overlay{
-    position:absolute;
-    inset:0;
-    background:
-      linear-gradient(135deg, rgba(18,18,18,.85), rgba(27,21,51,.65)),
-      radial-gradient(600px 300px at 20% 10%, rgba(123,97,255,.25), transparent 60%);
-    display:flex;
-    align-items:center;
-  }
+.card{
+  background:var(--card-bg);
+  border-radius:16px;
+  padding:14px;
+  border:1px solid #333;
+  transition:.25s;
+  display:flex;
+  flex-direction:column;
+}
 
-  .hero-content{
-    max-width:1100px;
-    margin:auto;
-    padding:0 16px;
-  }
+.card:hover{
+  transform:translateY(-6px);
+  border-color:var(--purple-1);
+}
 
-  .hero-content h1{
-    font-size:36px;
-    margin:0 0 10px;
-    background:linear-gradient(135deg,var(--purple-1),var(--purple-2));
-    background-clip:text;
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-  }
+/* Image */
+.card img{
+  width:100%;
+  height:160px;
+  object-fit:contain;
+  background:#111;
+  border-radius:12px;
+  margin-bottom:12px;
+}
 
-  .hero-content p{
-    max-width:520px;
-    line-height:1.9;
-    color:#e5e5e5;
-    font-size:15px;
-  }
+/* Content */
+.card strong{
+  font-size:15px;
+  margin-bottom:4px;
+}
 
-  .hero-actions{
-    margin-top:22px;
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-  }
+.desc{
+  font-size:13px;
+  color:#cfcfcf;
+  margin-bottom:8px;
+  line-height:1.6;
+}
 
-  .hero-btn{
-    padding:12px 26px;
-    border:none;
-    border-radius:999px;
-    font-weight:900;
-    cursor:pointer;
-    color:#fff;
-    background:linear-gradient(135deg,var(--purple-1),var(--purple-2));
-  }
+.price{
+  font-weight:900;
+  background:linear-gradient(135deg,var(--purple-1),var(--purple-2));
+  background-clip:text;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 
-  .hero-btn.outline{
-    background:transparent;
-    border:2px solid var(--purple-1);
-  }
+.status{
+  font-size:12px;
+  font-weight:700;
+  color:var(--green);
+  margin:6px 0 10px;
+}
 
-  /* ===== Main Content ===== */
-  .container{
-    max-width:1100px;
-    margin:auto;
-    padding:40px 16px;
-  }
+/* Button */
+.add-cart{
+  margin-top:auto;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:900;
+  color:#fff;
+  background:linear-gradient(135deg,var(--purple-1),var(--purple-2));
+  transition:.2s;
+}
 
-  h2{
-    background:linear-gradient(135deg,var(--purple-1),var(--purple-2));
-    background-clip:text;
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    margin-bottom:6px;
-  }
-
-  .products{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    gap:16px;
-    margin-top:24px;
-  }
-
-  .card{
-    background:var(--card-bg);
-    border-radius:14px;
-    padding:14px;
-    border:1px solid #333;
-    transition:.2s;
-  }
-
-  .card:hover{
-    transform:translateY(-4px);
-    border-color:var(--purple-1);
-  }
-
-  .price{
-    margin-top:6px;
-    font-weight:900;
-    background:linear-gradient(135deg,var(--purple-1),var(--purple-2));
-    background-clip:text;
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-  }
-
-  .status{
-    margin-top:4px;
-    font-size:12px;
-    font-weight:700;
-    color:var(--green);
-  }
-
-  @media (max-width:768px){
-    .hero-content h1{
-      font-size:28px;
-    }
-  }
+.add-cart:hover{
+  opacity:.9;
+}
 </style>
 </head>
 
@@ -159,27 +115,6 @@
 
 <div id="headerMount"></div>
 
-<!-- ===== HERO VIDEO BANNER ===== -->
-<section class="hero-video">
-  <video src="media/video.mp4" autoplay muted loop playsinline></video>
-
-  <div class="hero-overlay">
-    <div class="hero-content">
-      <h1>قوة الألعاب تبدأ من هنا</h1>
-      <p>
-        في قيم زون نوفر لك أقوى قطع الكمبيوتر، وأحدث أجهزة
-        PlayStation و Xbox، مع ملحقات أصلية وتجربة تسوق احترافية.
-      </p>
-
-      <div class="hero-actions">
-        <button class="hero-btn">تسوق الآن</button>
-        <button class="hero-btn outline">استكشف العروض</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PRODUCTS ===== -->
 <main class="container">
   <h2>المنتجات</h2>
   <p>تشكيلة واسعة من قطع البي سي وأجهزة الألعاب</p>
@@ -190,51 +125,239 @@
 <div id="footerMount"></div>
 
 <script>
-  async function injectTemplate(id,file){
-    const res=await fetch(file);
-    const html=await res.text();
-    const doc=new DOMParser().parseFromString(html,"text/html");
-    document.getElementById(id).innerHTML=doc.body.innerHTML;
-    document.getElementById(id).querySelectorAll("script").forEach(o=>{
-      const s=document.createElement("script");
-      s.text=o.textContent;
-      o.replaceWith(s);
-    });
-  }
-
-  injectTemplate("headerMount","header.html");
-  injectTemplate("footerMount","footer.html");
-
-  const products=[
-    "RTX 4090","RTX 4080","RTX 4070","RTX 4060",
-    "Ryzen 9 7950X","Ryzen 7 7800X3D","Ryzen 5 7600",
-    "Intel i9 14900K","Intel i7 14700K","Intel i5 14600K",
-    "PlayStation 5","PlayStation 5 Slim","Xbox Series X","Xbox Series S",
-    "يد PS5","يد Xbox","سماعة ألعاب","كيبورد RGB","ماوس ألعاب",
-    "شاشة 240Hz","شاشة 165Hz","SSD NVMe 2TB","SSD NVMe 1TB",
-    "RAM 64GB","RAM 32GB","RAM 16GB","مزود طاقة 1000W","مزود طاقة 850W",
-    "كيس PC احترافي","كيس PC متوسط","مبرد مائي","مبرد هوائي",
-    "لوحة أم Z790","لوحة أم B650","كرت شبكة","كرت التقاط","ذراع تحكم إضافي"
-  ];
-
-  const list=document.getElementById("productList");
-
-  function render(arr){
-    list.innerHTML=arr.map(p=>`
-      <div class="card">
-        <strong>${p}</strong>
-        <div class="price">${Math.floor(Math.random()*5000+300)} ر.س</div>
-        <div class="status">متوفر</div>
-      </div>
-    `).join("");
-  }
-
-  render(products);
-
-  window.addEventListener("gz-search",e=>{
-    const q=e.detail.query.toLowerCase();
-    render(products.filter(p=>p.toLowerCase().includes(q)));
+async function injectTemplate(id,file){
+  const res=await fetch(file);
+  const html=await res.text();
+  const doc=new DOMParser().parseFromString(html,"text/html");
+  document.getElementById(id).innerHTML=doc.body.innerHTML;
+  document.getElementById(id).querySelectorAll("script").forEach(o=>{
+    const s=document.createElement("script");
+    s.text=o.textContent;
+    o.replaceWith(s);
   });
+}
+
+injectTemplate("headerMount","header.html");
+injectTemplate("footerMount","footer.html");
+
+/* ===== Products Data ===== */
+const products = [
+  // ===== GPU =====
+  {
+    name:"RTX 4090",
+    desc:"أقوى كرت شاشة للألعاب بدقة 4K وتجربة احترافية",
+    price:6899,
+    img:"media/products/rtx4090.png"
+  },
+  {
+    name:"RTX 4080",
+    desc:"أداء قوي للألعاب والبرامج الثقيلة",
+    price:5499,
+    img:"media/products/rtx4080.png"
+  },
+  {
+    name:"RTX 4070",
+    desc:"توازن مثالي بين السعر والأداء",
+    price:3299,
+    img:"media/products/rtx4070.png"
+  },
+  {
+    name:"RTX 4060",
+    desc:"خيار ممتاز للألعاب بدقة 1080p",
+    price:2199,
+    img:"media/products/rtx4060.png"
+  },
+
+  // ===== CPU =====
+  {
+    name:"Ryzen 9 7950X",
+    desc:"معالج احترافي للألعاب وصناعة المحتوى",
+    price:2599,
+    img:"media/products/ryzen9.png"
+  },
+  {
+    name:"Ryzen 7 7800X3D",
+    desc:"أفضل معالج ألعاب بتقنية 3D V-Cache",
+    price:1899,
+    img:"media/products/ryzen7.png"
+  },
+  {
+    name:"Intel i9 14900K",
+    desc:"أقوى معالج من Intel للمهام الثقيلة",
+    price:2799,
+    img:"media/products/i9.png"
+  },
+  {
+    name:"Intel i7 14700K",
+    desc:"أداء ممتاز للألعاب والبث",
+    price:2199,
+    img:"media/products/i7.png"
+  },
+
+  // ===== Consoles =====
+  {
+    name:"PlayStation 5",
+    desc:"جهاز سوني الجيل الجديد",
+    price:2299,
+    img:"media/products/ps5.png"
+  },
+  {
+    name:"PlayStation 5 Slim",
+    desc:"نفس القوة بحجم أنحف",
+    price:2399,
+    img:"media/products/ps5-slim.png"
+  },
+  {
+    name:"Xbox Series X",
+    desc:"أقوى جهاز ألعاب من مايكروسوفت",
+    price:2199,
+    img:"media/products/xbox.png"
+  },
+  {
+    name:"Xbox Series S",
+    desc:"جهاز اقتصادي للألعاب الرقمية",
+    price:1499,
+    img:"media/products/xbox-s.png"
+  },
+
+  // ===== Storage =====
+  {
+    name:"SSD NVMe 2TB",
+    desc:"سرعة عالية لتقليل أوقات التحميل",
+    price:699,
+    img:"media/products/ssd2tb.png"
+  },
+  {
+    name:"SSD NVMe 1TB",
+    desc:"أداء سريع بسعة ممتازة",
+    price:399,
+    img:"media/products/ssd1tb.png"
+  },
+
+  // ===== RAM =====
+  {
+    name:"RAM 64GB DDR5",
+    desc:"مثالي للتصميم والبث المباشر",
+    price:999,
+    img:"media/products/ram64.png"
+  },
+  {
+    name:"RAM 32GB DDR5",
+    desc:"أداء قوي للألعاب الحديثة",
+    price:599,
+    img:"media/products/ram32.png"
+  },
+  {
+    name:"RAM 16GB DDR5",
+    desc:"خيار ممتاز للاستخدام اليومي",
+    price:329,
+    img:"media/products/ram16.png"
+  },
+
+  // ===== Monitors =====
+  {
+    name:"شاشة 240Hz",
+    desc:"شاشة ألعاب احترافية بسرعة فائقة",
+    price:1599,
+    img:"media/products/monitor240.png"
+  },
+  {
+    name:"شاشة 165Hz",
+    desc:"تجربة لعب سلسة",
+    price:1199,
+    img:"media/products/monitor165.png"
+  },
+
+  // ===== Accessories =====
+  {
+    name:"كيبورد RGB ميكانيكي",
+    desc:"إضاءة RGB وتجربة كتابة احترافية",
+    price:349,
+    img:"media/products/keyboard.png"
+  },
+  {
+    name:"ماوس ألعاب",
+    desc:"دقة عالية واستجابة سريعة",
+    price:249,
+    img:"media/products/mouse.png"
+  },
+  {
+    name:"سماعة ألعاب",
+    desc:"صوت محيطي وتجربة غامرة",
+    price:399,
+    img:"media/products/headset.png"
+  },
+
+  // ===== Cooling & Power =====
+  {
+    name:"مبرد مائي",
+    desc:"تبريد احترافي للمعالجات القوية",
+    price:699,
+    img:"media/products/liquid-cooler.png"
+  },
+  {
+    name:"مبرد هوائي",
+    desc:"تبريد فعال وهادئ",
+    price:299,
+    img:"media/products/air-cooler.png"
+  },
+  {
+    name:"مزود طاقة 1000W",
+    desc:"طاقة مستقرة للأجهزة القوية",
+    price:799,
+    img:"media/products/psu1000.png"
+  },
+  {
+    name:"مزود طاقة 850W",
+    desc:"خيار ممتاز للأجهزة المتوسطة",
+    price:599,
+    img:"media/products/psu850.png"
+  },
+
+  // ===== Controllers =====
+  {
+    name:"يد تحكم PS5",
+    desc:"يد أصلية بتقنية Haptic Feedback",
+    price:329,
+    img:"media/products/ps5-controller.png"
+  },
+  {
+    name:"يد تحكم Xbox",
+    desc:"راحة وتحكم عالي الدقة",
+    price:299,
+    img:"media/products/xbox-controller.png"
+  }
+];
+
+
+const list=document.getElementById("productList");
+
+function render(arr){
+  list.innerHTML = arr.map(p=>`
+    <div class="card">
+      <img src="${p.img}" alt="${p.name}">
+      <strong>${p.name}</strong>
+      <div class="desc">${p.desc}</div>
+      <div class="price">${p.price} ر.س</div>
+      <div class="status">متوفر</div>
+      <button class="add-cart" onclick="addToCart('${p.name}')">
+        إضافة للسلة
+      </button>
+    </div>
+  `).join("");
+}
+
+function addToCart(name){
+  alert("تمت إضافة المنتج إلى السلة:\n" + name);
+}
+
+render(products);
+
+/* ===== Search from Header ===== */
+window.addEventListener("gz-search",e=>{
+  const q=e.detail.query.toLowerCase();
+  render(products.filter(p=>p.name.toLowerCase().includes(q)));
+});
 </script>
 
 </body>

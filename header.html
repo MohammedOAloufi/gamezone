@@ -20,29 +20,30 @@
 }
 
 .gz-container{
-  max-width:1100px;
+  max-width:1300px; /* وسعنا العرض */
   margin:auto;
-  padding:14px 16px;
+  padding:14px 20px;
 }
 
-/* ===== Top Bar ===== */
+/* ===== Top Bar Layout ===== */
 .gz-topbar{
   display:grid;
-  grid-template-columns:auto 1fr auto;
+  grid-template-columns: auto minmax(600px,1fr) auto;
   align-items:center;
-  gap:16px;
+  gap:32px;
 }
 
-/* Brand */
+/* ===== Brand (RIGHT) ===== */
 .gz-brand{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:14px;
+  justify-self:end; /* أقصى اليمين */
 }
 
 .gz-logo-img{
-  width:48px;
-  height:48px;
+  width:52px;
+  height:52px;
   border-radius:50%;
   overflow:hidden;
   border:2px solid var(--purple-1);
@@ -57,7 +58,7 @@
 
 .gz-logo-text h1{
   margin:0;
-  font-size:22px;
+  font-size:24px;
   font-weight:900;
   background:linear-gradient(135deg,var(--purple-1),var(--purple-2));
   background-clip:text;
@@ -70,42 +71,44 @@
   color:#cfcfcf;
 }
 
-/* Search */
+/* ===== Search (CENTER - WIDE) ===== */
 .gz-search{
   display:flex;
-  gap:8px;
-  max-width:520px;
-  margin:auto;
+  gap:12px;
+  width:100%;
+  justify-self:center;
 }
 
 .gz-search input{
   flex:1;
-  padding:12px 16px;
+  padding:15px 20px;
   border-radius:999px;
   border:1px solid #333;
   background:var(--card-bg);
   color:var(--text-main);
+  font-size:15px;
 }
 
 .gz-search button{
-  padding:12px 22px;
+  padding:15px 34px;
   border:none;
   border-radius:999px;
   background:linear-gradient(135deg,var(--purple-1),var(--purple-2));
   color:#fff;
-  font-weight:800;
+  font-weight:900;
   cursor:pointer;
 }
 
-/* Actions */
+/* ===== Actions (LEFT) ===== */
 .gz-actions{
   display:flex;
   align-items:center;
-  gap:16px;
+  gap:22px;
+  justify-self:start; /* أقصى اليسار */
 }
 
 .gz-action{
-  font-size:18px;
+  font-size:20px;
   cursor:pointer;
 }
 
@@ -116,6 +119,10 @@
   text-decoration:none;
 }
 
+.gz-login:hover{
+  color:var(--purple-2);
+}
+
 /* ===== Desktop Nav ===== */
 .gz-nav{
   background:linear-gradient(135deg,#161616,#201a3d);
@@ -123,11 +130,11 @@
 }
 
 .gz-nav-inner{
-  max-width:1100px;
+  max-width:1300px;
   margin:auto;
-  padding:10px 16px;
+  padding:10px 20px;
   display:flex;
-  gap:18px;
+  gap:24px;
 }
 
 .gz-nav-inner a{
@@ -168,7 +175,7 @@
   width:260px;
   height:100%;
   background:linear-gradient(180deg,#121212,#1b1533);
-  padding:20px;
+  padding:24px;
   transition:.3s;
   z-index:2000;
 }
@@ -186,7 +193,7 @@
 }
 
 /* ===== Responsive ===== */
-@media (max-width:768px){
+@media (max-width:900px){
   .gz-search,
   .gz-nav{
     display:none;
@@ -194,6 +201,10 @@
 
   .gz-burger{
     display:block;
+  }
+
+  .gz-topbar{
+    grid-template-columns: auto auto;
   }
 }
 </style>
@@ -203,10 +214,10 @@
 
     <div class="gz-topbar">
 
-      <!-- Logo -->
+      <!-- RIGHT -->
       <div class="gz-brand">
         <div class="gz-logo-img">
-          <img src="media/gamezone.jpg">
+          <img src="media/logo/gamezone.jpg" alt="GameZone Logo">
         </div>
         <div class="gz-logo-text">
           <h1>قيم زون</h1>
@@ -214,13 +225,13 @@
         </div>
       </div>
 
-      <!-- Search -->
+      <!-- CENTER -->
       <div class="gz-search">
         <input placeholder="ابحث عن قطعة أو جهاز...">
         <button>بحث</button>
       </div>
 
-      <!-- Actions -->
+      <!-- LEFT -->
       <div class="gz-actions">
         <span class="gz-action">🛒</span>
         <span class="gz-action">❤️</span>
